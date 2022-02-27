@@ -11,8 +11,21 @@
         var gMars = 3.7;
         var gJupiter = 24.8;
         var weight = parseFloat(prompt("Please add your weight"));
-        var finalWeight = weight * gMars / gEarth;
-        document.write(finalWeight);
+        var planetSelection = parseInt(prompt("Select the planet\n1 for Mars, 2 for Jupiter"));
+        if(planetSelection == 1) {
+            var finalWeight = weight * gMars / gEarth;
+            var planet = "Mars";
+            document.write("Your weight on the planet <strong>" + planet + (" is ") + finalWeight + "</strong>");
+        }
+        else if(planetSelection == 2) {
+            var finalWeight = weight * gJupiter / gEarth;
+            var planet = "Jupiter";
+            document.write("Your weight on the planet <strong>" + planet + (" is ") + finalWeight + "</strong>");
+        }
+        else {
+            document.write("<strong>Please enter an available option!</strong>")
+        }
+
 </script>
 
 </body>
