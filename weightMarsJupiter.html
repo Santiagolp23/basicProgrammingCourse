@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Your weight on other planes</title>
+</head>
+<body>
+<h1> Your weight on other planes </h1>
+<p>On the planet earth your weight differently than on Mars or Jupiter.</p>
+<script>
+        var gEarth = 9.8;
+        var gMars = 3.7;
+        var gJupiter = 24.8;
+        var weight = parseFloat(prompt("Please add your weight"));
+        var finalWeight = weight * gMars / gEarth;
+        document.write(finalWeight);
+</script>
+
+</body>
+</html>
