@@ -5,11 +5,17 @@ var keys = {
     RIGHT: 39,
 };
 
-document.addEventListener("keyup", drawKeyPress);
+document.addEventListener("keydown", drawKeyPress);
+document.addEventListener("mousedown", drawMousePress);
+document.addEventListener("mousemove", drawMouseMove);
+document.addEventListener("mouseup", drawMouseUp);
+
+
 var box = document.getElementById("drawingArea");
 var paper = box.getContext("2d");
 var x = 150;
 var y = 150;
+var mousePressed = false;
 
 drawLine("red", 149, 149, 151, 151, paper);
 
@@ -26,7 +32,7 @@ function drawLine(color, xInitial, yInitial, xFinal, yFinal, paper) {
 
 function drawKeyPress(event) {
     var consColor = "blue";
-    var movement = 10;
+    var movement = 3;
     switch(event.keyCode) {
         case keys.UP:
             drawLine(consColor, x, y, x, y - movement, paper);
@@ -48,4 +54,25 @@ function drawKeyPress(event) {
             x = x + movement;
         break;
     }
+
+
+}
+
+function drawMousePress(event) {
+    drawPressed = true;
+    xPressed = event.layerX;
+    yPressed = event.layerY;
+}
+
+function drawMouseMove(event) {
+    do {
+        x = event.layerX;
+        y = event.layerY;
+        drawLine("red", xPressed, yPressed, x, y, paper);
+    }
+    while(drawMousePress == true);
+}
+
+function drawMouseUp(event){
+    drawPressed = false;
 }

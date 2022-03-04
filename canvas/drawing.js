@@ -32,7 +32,8 @@ function drawingByCLick() {
 
     drawLine("red", 1, 1, 1, (width - 1));
     drawLine("red", 1, (width - 1), (width - 1), (width - 1));
-    drawLine("red", 299, (width - 1), (width - 1), (width - 1));
-    drawLine("red", (width - 1), (width - 1), (width - 1), 1);
+
+    drawLine("red", 1, 1, (width - 1), 1);
+    drawLine("red", (width - 1), 1, (width - 1), (width - 1));
 
 }
