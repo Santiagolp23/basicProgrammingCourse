@@ -1,6 +1,15 @@
 var vp = document.getElementById("platziValley");
 var paper = vp.getContext("2d");
 var quantity;
+var x = 250;
+var y = 250;
+
+var keys = {
+    UP: 38,
+    DOWN: 40,
+    LEFT: 37,
+    RIGHT: 39,
+};
 
 var tile = {
     url: "tile.png",
@@ -22,6 +31,8 @@ var chicken = {
     loadDone: false
 };
 
+document.addEventListener("keydown", drawKeyPress);
+
 tile.image = new Image();
 tile.image.src = tile.url;
 tile.image.addEventListener("load", loadTile);
@@ -42,6 +53,8 @@ function loadTile() {
     tile.loadDone = true;
     draw(tile.image, tile.loadDone, 0, 0);
 }
+
+draw(pig.image, pig.loadDone, x, y);
 
 function loadCow() {
     quantity = random(1, 10);
@@ -77,6 +90,34 @@ function loadChicken() {
         y = y * 80;
         draw(chicken.image, chicken.loadDone, x, y);
     }
+}
+
+function drawKeyPress() {
+    var movement = 40;
+    var image = pig.image;
+    var imageLoaded = pig.loadDone;
+    switch(event.keyCode) {
+        case keys.UP:
+            y = y - movement;
+            draw(image, imageLoaded, x, y);
+            console.log(y);
+            break;
+
+        case keys.DOWN:
+            y = y + movement;
+            draw(image, imageLoaded, x, y);
+            break;
+
+        case keys.LEFT:
+            x = x - movement;
+            draw(image, imageLoaded, x, y);
+            break;
+
+        case keys.RIGHT:
+            x = x + movement;
+            draw(image, imageLoaded, x, y);
+            break;
+        }
 }
 
 function draw(imageToDraw, ifThis, x, y) {
