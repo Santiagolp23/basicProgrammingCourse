@@ -13,5 +13,16 @@ register.push(new Bill (10, 2));
 
 var money = 210;
 var div = 0;
+var papers = 0;
 
+var b = document.getElementById("extract");
+b.addEventListener("click", deliverMoney);
 
+function deliverMoney() {
+    for(var bi of register) {
+        if(money > 0) {
+            div = Math.floor(money / bi.value);
+            console.log(div);
+        }
+    }
+}
