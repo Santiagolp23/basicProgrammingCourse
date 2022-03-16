@@ -7,6 +7,7 @@ class Bill {
 
 var register = [];
 var delivered = [];
+register.push(new Bill (100, 5));
 register.push(new Bill (50, 20));
 register.push(new Bill (20, 20));
 register.push(new Bill (10, 10));
@@ -14,6 +15,7 @@ register.push(new Bill (10, 10));
 var money = 0;
 var div = 0;
 var papers = 0;
+
 
 var result = document.getElementById("result")
 var b = document.getElementById("extract");
@@ -41,7 +43,23 @@ function deliverMoney() {
     else {
           for(var e of delivered) {
              if(e.quantity > 0) {
-             result.innerHTML += e.quantity + " bills of $" + e.value + "<br />";
+                switch(e.value) {
+                    case 100:
+                        result.innerHTML += "<img src='100.png'>" + e.quantity + " bills of $" + e.value + "<br />";
+                        break;
+
+                    case 50:
+                        result.innerHTML += "<img src='50.png'>" + e.quantity + " bills of $" + e.value + "<br />";
+                        break;
+
+                    case 20:
+                        result.innerHTML += "<img src='20.png'>" + e.quantity + " bills of $" + e.value + "<br />";
+                        break;
+
+                    case 10:
+                        result.innerHTML += "<img src='10.png'>" + e.quantity + " bills of $" + e.value + "<br />";
+                        break;
+                }
              }
           }
     }
