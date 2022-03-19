@@ -35,32 +35,33 @@ function deliverMoney() {
             }
             delivered.push( new Bill(bi.value, papers));
             money -= (bi.value * papers);
+            bi.quantity -= papers;
         }
     }
     if (money > 0) {
         result.innerHTML = "I cannot give you that amount :(";
     }
     else {
-          for(var e of delivered) {
-             if(e.quantity > 0) {
-                switch(e.value) {
-                    case 100:
-                        result.innerHTML += "<img src='100.png'>" + e.quantity + " bills of $" + e.value + "<br />";
-                        break;
+        for(var e of delivered) {
+           if(e.quantity > 0) {
+              switch(e.value) {
+                  case 100:
+                      result.innerHTML += "<img src='100.png'>" + e.quantity + " bills of $" + e.value + "<br />";
+                      break;
 
-                    case 50:
-                        result.innerHTML += "<img src='50.png'>" + e.quantity + " bills of $" + e.value + "<br />";
-                        break;
+                  case 50:
+                      result.innerHTML += "<img src='50.png'>" + e.quantity + " bills of $" + e.value + "<br />";
+                      break;
 
-                    case 20:
-                        result.innerHTML += "<img src='20.png'>" + e.quantity + " bills of $" + e.value + "<br />";
-                        break;
+                  case 20:
+                      result.innerHTML += "<img src='20.png'>" + e.quantity + " bills of $" + e.value + "<br />";
+                      break;
 
-                    case 10:
-                        result.innerHTML += "<img src='10.png'>" + e.quantity + " bills of $" + e.value + "<br />";
-                        break;
-                }
-             }
-          }
-    }
+                  case 10:
+                      result.innerHTML += "<img src='10.png'>" + e.quantity + " bills of $" + e.value + "<br />";
+                      break;
+              }
+           }
+        }
+   }
 }
